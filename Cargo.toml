@@ -1,0 +1,27 @@
+[package]
+name = "nrf52-ws2812"
+version = "0.1.0"
+authors = ["James Munns <james.munns@ferrous-systems.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nrf52840-hal = "0.11"
+rtt-target = {version = "0.2.0", features = ["cortex-m"] }
+cortex-m-rt = "0.6.12"
+panic-reset = "0.1.0"
+embedded-hal = "0.2.4"
+cortex-m = { version = "0.6.3", features = ["inline-asm"] }
+libm = "0.2.1"
+
+[profile.release]
+panic = "abort"
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+
+[profile.dev]
+panic = "abort"
+lto = "fat"
+codegen-units = 1
